@@ -9,14 +9,14 @@
     <script src="js/calculator.js"></script>
 </head>
 <body>
-<div class="nav">
-    <a href = "index.html">
-        6 String Guitar
-    </a>
-    <a href = "mandolin.html">
-        Mandolin
-    </a>    
-</div>
+    <div class="nav">
+        <a href = "index.html">
+            6 String Guitar
+        </a>
+        <a href = "mandolin.html">
+            Mandolin
+        </a>    
+    </div>
     <div class="main-container">
         <h1 class="title" >
             Mandolin Nut Calculator
@@ -34,7 +34,7 @@
                 <label>e: </label>
                 <input class="string"/>
             </div>
-             <div class="friendly">
+            <div class="friendly">
                 <label>a: </label>
                 <input class="string"/>
             </div>
@@ -42,7 +42,7 @@
                 <label>a: </label>
                 <input class="string"/>
             </div>
-             <div class="friendly">
+            <div class="friendly">
                 <label>d: </label>
                 <input class="string"/>
             </div>
@@ -50,7 +50,7 @@
                 <label>d: </label>
                 <input class="string"/>
             </div>
-             <div class="friendly">
+            <div class="friendly">
                 <label>g: </label>
                 <input class="string"/>
             </div>
@@ -65,6 +65,10 @@
                 <label>Center To Center: </label>
                 <input id="centerToCenter"/>
             </div>
+            <div>
+                <label>Spacing Between Octave Strings: </label>
+                <input id="octaveSpacing"/>
+            </div>
             <button type="Button" onclick="main()">Calculate Spacing</button>
         </div>
         <div class="box">
@@ -77,7 +81,7 @@
                         e:
                     </p> 
                     <p class="" id ="string1">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <div class="output-minibox friendly">
@@ -85,7 +89,7 @@
                         and:
                     </p> 
                     <p class="" id ="string2">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <br>
@@ -94,7 +98,7 @@
                         a:
                     </p> 
                     <p class="" id ="string3">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <div class="output-minibox friendly">
@@ -102,7 +106,7 @@
                         and:
                     </p> 
                     <p class="" id ="string4">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <br>
@@ -111,7 +115,7 @@
                         d:
                     </p> 
                     <p class="" id ="string5">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <div class="output-minibox friendly">
@@ -119,7 +123,7 @@
                         and:
                     </p> 
                     <p class="" id ="string6">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <br>
@@ -128,7 +132,7 @@
                         g:
                     </p> 
                     <p class="" id ="string7">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <div class="output-minibox friendly">
@@ -136,12 +140,15 @@
                         and:
                     </p> 
                     <p class="" id ="string8">
-                    <!-- spacing goes here! -->
+                        <!-- spacing goes here! -->
                     </p>  
                 </div>
                 <br>
 
             </div>
         </div>
+    </div>
+    <div class="hidden-checkbox">
+        <input id="octaveOrNot" type="checkbox" checked/>
     </div>
 </body>

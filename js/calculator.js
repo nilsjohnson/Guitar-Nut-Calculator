@@ -5,22 +5,26 @@
 var isValidInput;
 
 var main = function() {
+	var isOctaveInstrument = document.getElementById("octaveOrNot").checked;
 	var PRECISION = 3;
 	isValidInput = true;
-
 	var rawStrings = document.getElementsByClassName("string");
-	//console.log(rawStrings[1]);
 	var strings = [];
 	var numStrings = rawStrings.length;
-	console.log(numStrings)
 	var totalStringWidth = 0;
 	var centerToCenter = getPosNumber(document.getElementById("centerToCenter")); 
-
-	for (var i = 0; i < numStrings; i++){
+	if (isOctaveInstrument)
+	{
+		var octaveSpace = getPosNumber(document.getElementById("octaveSpacing"));
+	}	
+	console.log("octavespace: " + octaveSpace)
+	for (var i = 0; i < numStrings; i++)
+	{
 		strings[i] = getPosNumber(rawStrings[i]);
 	}
 
-	for (var i = 0; i < numStrings; i++){
+	for (var i = 0; i < numStrings; i++)
+	{
 		if(i === 0 || i === numStrings - 1)
 		{
 			totalStringWidth += strings[i]/2;	
@@ -30,23 +34,54 @@ var main = function() {
 			totalStringWidth += strings[i]
 		}
 	}
-	console.log(totalStringWidth);
+	console.log("total string width: " + totalStringWidth);
 
-	var spacing = (centerToCenter - totalStringWidth) / (numStrings - 1);
+	if (isOctaveInstrument)
+	{
+		totalStringWidth += (octaveSpace*(numStrings/2));
+		console.log("total string and octave space width: " + totalStringWidth);
 
+	}
+
+	var spacing = (centerToCenter - totalStringWidth) / (isOctaveInstrument ? numStrings / 2 - 1 : numStrings -1);
+	console.log("spacing: "+ spacing)
 	var totalDistanceTreble = -strings[0]/2;
 	var totalDistanceBass = -strings[0]/2 + strings[0]; 
 
-	if (isValidInput)
+	if (isValidInput && !isOctaveInstrument)
 	{
-		for (var i = 1; i <= numStrings; i++){
+		for (var i = 1; i <= numStrings; i++)
+		{
 			document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
 			totalDistanceTreble += spacing+strings[i-1];
 			totalDistanceBass += spacing + strings[i];
 		}
+
+	}
+	if (isValidInput && isOctaveInstrument)
+	{
+		for (var i = 1; i <= numStrings; i++)
+		{
+			if (i % 2 === 1)
+			{
+				document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
+				totalDistanceTreble += octaveSpace+strings[i-1];
+				totalDistanceBass += octaveSpace + strings[i];
+
+			}
+			else
+			{
+				document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
+				totalDistanceTreble += spacing+strings[i-1];
+				totalDistanceBass += spacing + strings[i];
+			}
+		}
+
 	}
 	else
+	{
 		console.log("input error!");
+	}
 }; // main
 
 var getPosNumber = function(element) {
@@ -90,5 +125,18 @@ var showError = function (element) {
 
 var removeError = function (element) {
 	element.classList.remove("error");
+
+};
+
+var checkForOctave = function (){
+	var checkForOctave = document.getElementById("octaveOrNot").value;
+	if (checkForOctave === "TRUE")
+	{
+		return true;
+	}
+	else
+	{
+		return false;	
+	}
 
 };
