@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guitar Nut Calculator</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Guitar Nut Spacing Calculator">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/calculator.js"></script>
+</head>
+<body>
+<div class="nav">
+            <a href = "index.html">
+                6 String Guitar
+            </a>
+            <a href = "mandolin.html">
+                Mandolin
+            </a>    
+        </div>
+    <div class="main-container">
+        <h1 class="title" >
+            Guitar Nut Calculator
+        </h1>    
+        <hr>
+        <div class="box">
+            <h2>
+                Enter String Guages
+            </h2>
+            <div>
+                <label>e: </label>
+                <input class="string"/>
+            </div>
+            <div>
+                <label>b: </label>
+                <input class="string"/>
+            </div>
+            <div>
+                <label>g: </label>
+                <input class="string"/>
+            </div>
+            <div>
+                <label>d: </label>
+                <input class="string"/>
+            </div>
+            <div>
+                <label>a: </label>
+                <input class="string"/>
+            </div>
+            <div>
+                <label>E: </label>
+                <input class="string"/>
+            </div>
+            <h3>
+                Spacing
+            </h3>
+            <div>
+                <label>Center To Center: </label>
+                <input id="centerToCenter"/>
+            </div>
+            <button type="Button" onclick="main()">Calculate Spacing</button>
+        </div>
+        <div class="box">
+            <h1 class="titles">
+                Your Spacing
+            </h1>
+            <div class="result">
+                <div class="output-minibox">
+                    <p class="friendly">
+                        e:
+                    </p> 
+                    <p class="friendly" id ="string1">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+                <div class="output-minibox">
+                    <p class="friendly">
+                        b:
+                    </p> 
+                    <p class="friendly" id ="string2">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+                <div class="output-minibox">
+                    <p class="friendly">
+                        g:
+                    </p> 
+                    <p class="friendly" id ="string3">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+                <div class="output-minibox">
+                    <p class="friendly">
+                        d:
+                    </p> 
+                    <p class="friendly" id ="string4">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+                <div class="output-minibox">
+                    <p class="friendly">
+                        a:
+                    </p> 
+                    <p class="friendly" id ="string5">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+                <div class="output-minibox">
+                    <p class="friendly">
+                        E:
+                    </p> 
+                    <p class="friendly" id ="string6">
+                        <!-- spacing goes here! -->
+                    </p>  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
