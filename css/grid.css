@@ -1,0 +1,142 @@
+* {
+	-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+    -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+	box-sizing: border-box;
+}
+
+
+body {
+background-color: black;
+
+}
+
+.main-block {
+	background: rgba(255,255,255,0.9);
+	width: 80%;
+	padding-right: 15px;
+ 	padding-left: 15px;
+  	margin-right: auto;
+  	margin-left: auto;
+  	padding: 2px 5px 2px 5px;
+}
+
+.title {
+	text-align: center;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6 {
+	display: inline-block;
+  	min-height: 1px;
+  	vertical-align: top;
+  	height: fill; 
+}
+.col-1 {
+	width: 16.66666667%;
+	
+}
+
+
+.col-2 {
+	width: 32%;
+	
+}
+
+.col-3 {
+	width: 49%;
+
+}
+
+.col-4 {
+	width: 66.6666667%;
+
+}
+
+.col-5 {
+	width: 83.3333333%;
+}
+
+.col-6 {
+	width: 100%;
+}
+
+.row {
+  padding-left: : 2%;
+  margin-left: 2%;
+
+
+}
+
+.nav li {
+    display: inline-block;
+
+}
+
+.nav a {
+	text-decoration: none;
+	hieght: 32px;
+}
+
+.nav {
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+    
+}
+
+.center {
+	float: none;
+    margin: 0 auto;
+}
+
+.input-box div, input {
+	display: inline-block;
+}
+
+.input-box {
+	width: 16.5%;
+	display: inline-block;
+}
+
+/*.box div {
+	padding-top: 4px;
+}*/
+
+.button {
+    border: 1px black;
+   	background-color: rgb(200,255,255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+a.button {
+	background: none;/*linear-gradient(45deg, rgba(255,184,115,0.65) 0%,rgba(255,124,189,0.65) 50%,rgba(108,0,153,0.65) 100%);*/
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px rgba(34,62,66,.25);
+  color: black;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 16px 32px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
+}
+
+a.button:hover {
+	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
+	-webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
+}
+
+#banner-header {
+	color: rgb(0, 0, 0, .9);
+	padding-right: 6em;
+}

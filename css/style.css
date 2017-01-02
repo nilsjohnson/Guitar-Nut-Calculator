@@ -1,59 +1,23 @@
+
 .error {
 	background-color: red;
 }
 
-body {
-	background: url("../img/bg.png") repeat;
-}
-
-.main-container {
-	background-color: white;
-	opacity: .8;
-	width: 75%;
-	margin:0 auto;
-	padding: 5%;
-}
-
-.title {
-	text-align: center;
-}
-
-.box {
-	display: inline-block;
-  	width: 24%;
-  	margin: 5%;
-  	float: top;
-  	vertical-align: top;
-}
-
-.friendly {
-		display: inline-block;
-}
-
-.result p {
+/*.result p {
 	font-weight: bold;
 	display: inline-block;
-}
-
-.nav a{
-	 background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-
-}
+}*/
 
 .output-minibox {
 	border: 1px solid;
 	border-radius: 1px;
+	width: 50%;
 }
 
 .hidden-checkbox{
 	display: none;
+}
+
+#banner-header{
+	color: black;
 }
