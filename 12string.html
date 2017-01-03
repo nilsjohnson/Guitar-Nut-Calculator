@@ -30,9 +30,9 @@
         </a>    
     </li>
 </ul>
-<div class="main-block" style="width: 1120px !important">
+<div class="main-block">
     <div class="row">
-        <div class="col-6" style="min-width: 432px !important">
+        <div class="col-6">
             <h2 class="title">
                 Enter String Guages
             </h2>
@@ -77,15 +77,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="center">
-                    <h2 class="title">Enter Total Width</h2>
-                    <p>Center To Center: <p>
-                        <input id="centerToCenter"/>
-                    </div>    
-                </div>
-                <button type="Button" onclick="main()">Calculate Spacing</button>
+            	<div class="col-6">
+            		<h2 class="title">Enter Total Width</h2>
+            		<p>Center To Center: </p>
+            		<input id="centerToCenter"/>   
+            	</div>
+            	<div class="col-6">
+            		<h2 class="title">Enter Spacing</h2>
+            		<p>Spacing between octave strings: </p>
+            		<input id="octaveSpacing"/>   
+            	</div>
+            	<button type="Button" onclick="main()">Calculate Spacing</button>
+            </div>
             </div>    
-            <div class="col-6" style="min-width: 432px !important">
+            <div class="col-6" id="table-box">
                 <h2 class="title">
                     Your Spacing
                 </h2>
@@ -151,7 +156,7 @@
         </div>
     </div>
     <div class="hidden-checkbox">
-        <input id="octaveOrNot" type="checkbox"/>
-    </div>
+    <input id="octaveOrNot" type="checkbox" checked/>
+</div>
 </body>
 </html>

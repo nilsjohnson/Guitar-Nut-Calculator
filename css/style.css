@@ -132,3 +132,7 @@ th, td {
 .border-block {
 	width: 346px;
 }
+
+#table-box {
+  min-width: 567px;
+}

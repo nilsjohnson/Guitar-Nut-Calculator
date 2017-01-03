@@ -6,6 +6,7 @@ var isValidInput;
 
 var main = function() {
 	var isOctaveInstrument = document.getElementById("octaveOrNot").checked;
+	console.log("this is an octave instrument: " + isOctaveInstrument);
 	var PRECISION = 3;
 	isValidInput = true;
 	var rawStrings = document.getElementsByClassName("string");
@@ -128,19 +129,6 @@ var showError = function (element) {
 
 var removeError = function (element) {
 	element.classList.remove("error");
-
-};
-
-var checkForOctave = function (){
-	var checkForOctave = document.getElementById("octaveOrNot").value;
-	if (checkForOctave === "TRUE")
-	{
-		return true;
-	}
-	else
-	{
-		return false;	
-	}
 
 };
 

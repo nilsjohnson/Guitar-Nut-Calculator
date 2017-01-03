@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Guitar Nut Calculator</title>
     <meta charset="utf-8">
@@ -10,7 +9,7 @@
     <script src="js/calculator.js"></script>
 </head>
 <body>
- <ul class="nav">
+   <ul class="nav">
     <li>
         <h1 class="title" id="banner-header">Guitar Nut Calculator</h1>
     </li>
@@ -30,9 +29,9 @@
         </a>    
     </li>
 </ul>
-<div class="main-block" style="width: 1120px !important">
+<div class="main-block">
     <div class="row">
-        <div class="col-6" style="min-width: 432px !important">
+        <div class="col-6">
             <h2 class="title">
                 Enter String Guages
             </h2>
@@ -63,69 +62,74 @@
                         <input class="string input-box""/>
                     </div>
                 </div>
-            </div>
+            </div>    
             <div class="row">
-                <div class="center">
+                <div class="col-6">
                     <h2 class="title">Enter Total Width</h2>
-                    <p>Center To Center: <p>
-                        <input id="centerToCenter"/>
-                    </div>    
+                    <p>Center To Center: </p>
+                    <input id="centerToCenter"/>   
+                </div>
+                <div class="col-6">
+                    <h2 class="title">Enter Spacing</h2>
+                    <p>Spacing between octave strings: </p>
+                    <input id="octaveSpacing"/>   
                 </div>
                 <button type="Button" onclick="main()">Calculate Spacing</button>
-            </div>    
-            <div class="col-6" style="min-width: 432px !important">
-                <h2 class="title">
-                    Your Spacing
-                </h2>
-                <div id="resultTable">
-                    <table class="center">
-                        <thead>
-                            <th class="string-col">String</th>
-                            <th>Treble Side</th>
-                            <th>Bass Side</th>
-                            <th>Treble Side</th>
-                            <th>Bass Side</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="string-col">E</td>
-                                <td id ="trebleSide1"></td>
-                                <td id ="bassSide1"></td>
-                                <td id ="trebleSide2"></td>
-                                <td id ="bassSide2"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">A</td>
-                                <td id ="trebleSide3"></td>
-                                <td id ="bassSide3"></td>
-                                <td id ="trebleSide4"></td>
-                                <td id ="bassSide4"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">D</td>
-                                <td id ="trebleSide5"></td>
-                                <td id ="bassSide5"></td>
-                                <td id ="trebleSide6"></td>
-                                <td id ="bassSide6"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">G</td>
-                                <td id ="trebleSide7"></td>
-                                <td id ="bassSide7"></td>
-                                <td id ="trebleSide8"></td>
-                                <td id ="bassSide8"></td>
-                            </tr>
-                        </tbody>     
-                    </table>
-                </div>
-                <p>
-                    <a href="javascript: popuponclick()">Printer Friendly</a>
-                </p>
             </div>
+        </div>           
+        <div class="col-6">
+            <h2 class="title">
+                Your Spacing
+            </h2>
+            <div id="resultTable">
+                <table class="center">
+                    <thead>
+                        <th class="string-col">String</th>
+                        <th>Treble Side</th>
+                        <th>Bass Side</th>
+                        <th>Treble Side</th>
+                        <th>Bass Side</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="string-col">E</td>
+                            <td id ="trebleSide1"></td>
+                            <td id ="bassSide1"></td>
+                            <td id ="trebleSide2"></td>
+                            <td id ="bassSide2"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">A</td>
+                            <td id ="trebleSide3"></td>
+                            <td id ="bassSide3"></td>
+                            <td id ="trebleSide4"></td>
+                            <td id ="bassSide4"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">D</td>
+                            <td id ="trebleSide5"></td>
+                            <td id ="bassSide5"></td>
+                            <td id ="trebleSide6"></td>
+                            <td id ="bassSide6"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">G</td>
+                            <td id ="trebleSide7"></td>
+                            <td id ="bassSide7"></td>
+                            <td id ="trebleSide8"></td>
+                            <td id ="bassSide8"></td>
+                        </tr>
+                    </tbody>     
+                </table>
+            </div>
+            <p>
+                <a href="javascript: popuponclick()">Printer Friendly</a>
+            </p>
         </div>
     </div>
-    <div class="hidden-checkbox">
-        <input id="octaveOrNot" type="checkbox"/>
-    </div>
+</div>
+<div class="hidden-checkbox">
+    <input id="octaveOrNot" type="checkbox" checked/>
+</div>
 </body>
 </html>
