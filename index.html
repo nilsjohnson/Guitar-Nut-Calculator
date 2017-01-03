@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Guitar Nut Spacing Calculator">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/responsive_grid.css" rel="stylesheet">
     <script src="js/calculator.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <h1 class="title" id="banner-header">Guitar Nut Calculator</h1>
     </li>
     <li>
-        <a href="index.html" class="button">
+        <a href="index.html" class="button act">
             6 String Guitar
         </a>
     </li>
@@ -24,78 +24,103 @@
             Mandolin
         </a>    
     </li>
+    <li>
+        <a href="12string.html" class="button">
+            12 String Guitar
+        </a>    
+    </li>
 </ul>
-<div class="main-block">
+<div class="main-block" style="width: 880px !important">
     <div class="row">
-        <div class="col-3">
+        <div class="col-6" style="width: 432px !important">
             <h2 class="title">
                 Enter String Guages
             </h2>
-            <div class="col-6 input-box">
-                <div id="">
-                    <label>E String: </label>
-                    <input class="string"/>
-                </div>
-                <div id="">
-                    <label>B String: </label>
-                    <input class="string"/>
-                </div>
-                <div id="">
-                    <label>G String: </label>
-                    <input class="string"/>
-                </div>
-                <div id="">
-                    <label>D String: </label>
-                    <input class="string"/>
-                </div>
-                <div id="">
-                    <label>A String: </label>
-                    <input class="string"/>
-                </div>
-                <div class="">
-                    <label>E String: </label>
-                    <input class="string"/>
+            <div class="row">
+                <div class="col-12">
+                    <div class="border-block">
+                        <label>E String: </label>
+                        <input class="string input-box"/>
+                    </div>
+                    <div class="border-block">
+                        <label>B String: </label>
+                        <input class="string input-box"/>
+                    </div>
+                    <div class="border-block">
+                        <label>G String: </label>
+                        <input class=" string input-box"/>
+                    </div>    
+                    <div class="border-block">
+                        <label>D String: </label>
+                        <input class="string input-box"/>
+                    </div>
+                    <div class="border-block">
+                        <label>A String: </label>
+                        <input class="string input-box"/>
+                    </div>
+                    <div class="border-block">
+                        <label>E String: </label>
+                        <input class="string input-box"/>
+                    </div>
                 </div>
             </div>
-            <h3 class="title">
-                Spacing
-            </h3>
-            <div>
+            <div class="row">
                 <div class="center">
+                    <h2 class="title">Enter Total Width</h2>
                     <p>Center To Center: </p>
                     <input id="centerToCenter"/>
-                </div>
+                </div>    
             </div>
             <button type="Button" onclick="main()">Calculate Spacing</button>
-        </div>
-        <div class="col-3">
+        </div>    
+        <div class="col-6" style="min-width: 432px !important">
             <h2 class="title">
                 Your Spacing
             </h2>
-            <div class="output-minibox">
-                <p>e:</p> 
-                <p id ="string1"></p>  
-            </div> 
-            <div class="output-minibox">
-                <p>b:</p> 
-                <p id ="string2"></p>  
-            </div>  
-            <div class="output-minibox">
-                <p>g:</p> 
-                <p id ="string3"></p>  
-            </div>  
-            <div class="output-minibox">
-                <p>d:</p> 
-                <p id ="string4"></p>  
-            </div> 
-            <div class="output-minibox">
-                <p>a:</p> 
-                <p id ="string5"></p>  
-            </div> 
-            <div class="output-minibox">
-                <p>E:</p> 
-                <p id ="string6"></p>  
+            <div id="resultTable">
+                <table class="center">
+                    <thead>
+                        <th>String</th>
+                        <th>Treble Side</th>
+                        <th>Bass Side</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>e</td>
+                            <td id ="trebleSide1"></td>
+                            <td id ="bassSide1"></td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td id ="trebleSide2"></td>
+                            <td id ="bassSide2"></td>
+                        </tr>
+                        <tr>
+                            <td>G</td>
+                            <td id ="trebleSide3"></td>
+                            <td id ="bassSide3"></td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td id ="trebleSide4"></td>
+                            <td id ="bassSide4"></td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td id ="trebleSide5"></td>
+                            <td id ="bassSide5"></td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td id ="trebleSide6"></td>
+                            <td id ="bassSide6"></td>
+                        </tr>
+                    </tbody>     
+                </table>
             </div>
+            <p>
+                <a href="javascript: popuponclick()">Printer Friendly</a>
+            </p>
         </div>
     </div>
 </div>

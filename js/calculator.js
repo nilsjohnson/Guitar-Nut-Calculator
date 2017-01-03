@@ -52,7 +52,8 @@ var main = function() {
 	{
 		for (var i = 1; i <= numStrings; i++)
 		{
-			document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
+			document.getElementById("trebleSide"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION);
+			document.getElementById("bassSide"+i).innerHTML = totalDistanceBass.toFixed(PRECISION);
 			totalDistanceTreble += spacing+strings[i-1];
 			totalDistanceBass += spacing + strings[i];
 		}
@@ -64,14 +65,16 @@ var main = function() {
 		{
 			if (i % 2 === 1)
 			{
-				document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
+				document.getElementById("trebleSide"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION);
+				document.getElementById("bassSide"+i).innerHTML = totalDistanceBass.toFixed(PRECISION);
 				totalDistanceTreble += octaveSpace+strings[i-1];
 				totalDistanceBass += octaveSpace + strings[i];
 
 			}
 			else
 			{
-				document.getElementById("string"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION) + ", to " + totalDistanceBass.toFixed(PRECISION);
+				document.getElementById("trebleSide"+i).innerHTML = totalDistanceTreble.toFixed(PRECISION);
+				document.getElementById("bassSide"+i).innerHTML = totalDistanceBass.toFixed(PRECISION);
 				totalDistanceTreble += spacing+strings[i-1];
 				totalDistanceBass += spacing + strings[i];
 			}
@@ -140,3 +143,11 @@ var checkForOctave = function (){
 	}
 
 };
+
+function popuponclick() {
+     my_window = window.open('', 'mywindow', 'status=1,width=600,height=800');
+     my_window.document.write('<html><head><title>Print Me</title></head>');
+   	 my_window.document.write('<body onafterprint="self.close()">');
+     my_window.document.write('<p>' + document.getElementById('resultTable').innerHTML + '</p>');
+     my_window.document.write('</body></html>');  
+  }
