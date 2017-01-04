@@ -18,7 +18,6 @@ var main = function() {
 	{
 		var octaveSpace = getPosNumber(document.getElementById("octaveSpacing"));
 	}	
-	console.log("octavespace: " + octaveSpace)
 	for (var i = 0; i < numStrings; i++)
 	{
 		strings[i] = getPosNumber(rawStrings[i]);
@@ -35,17 +34,13 @@ var main = function() {
 			totalStringWidth += strings[i]
 		}
 	}
-	console.log("total string width: " + totalStringWidth);
 
 	if (isOctaveInstrument)
 	{
 		totalStringWidth += (octaveSpace*(numStrings/2));
-		console.log("total string and octave space width: " + totalStringWidth);
-
 	}
 
 	var spacing = (centerToCenter - totalStringWidth) / (isOctaveInstrument ? numStrings / 2 - 1 : numStrings -1);
-	console.log("spacing: "+ spacing)
 	var totalDistanceTreble = -strings[0]/2;
 	var totalDistanceBass = -strings[0]/2 + strings[0]; 
 
@@ -60,7 +55,7 @@ var main = function() {
 		}
 
 	}
-	if (isValidInput && isOctaveInstrument)
+	else if (isValidInput && isOctaveInstrument)
 	{
 		for (var i = 1; i <= numStrings; i++)
 		{
