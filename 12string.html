@@ -8,9 +8,10 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive_grid.css" rel="stylesheet">
     <script src="js/calculator.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
- <ul class="nav">
+   <ul class="nav">
     <li>
         <h1 class="title" id="banner-header">Guitar Nut Calculator</h1>
     </li>
@@ -30,132 +31,178 @@
         </a>    
     </li>
 </ul>
-<div class="main-block">
+<div class="main-block" style="min-width: 582px !important">
     <div class="row">
-        <div class="col-6">
-            <h2 class="title">
-                Enter String Guages
-            </h2>
+        <div class="col-4">
+            <h2 class="title">String Guages</h2>
+            <hr>
             <div class="row">
-                <div class="col-12">
+                <div class="col-6no-break">
                     <div class="border-block">
-                        <label>First E String: </label>
-                        <input class="string input-box"/>
-                        <label>Second E String: </label>
-                        <input class="string input-box""/>
+                        <label class="string-label">First e String: </label>
+                        <input class="string input-block"/>    
                     </div>
+                </div> 
+                <div class="col-6no-break">
                     <div class="border-block">
-                        <label>First B String: </label>
-                        <input class="string input-box""/>
-                        <label>Second B String: </label>
-                        <input class="string input-box""/>
-                    </div>  
-                    <div class="border-block">
-                        <label> First G String: </label>
-                        <input class="string input-box""/>
-                        <label>Second G String: </label>
-                        <input class="string input-box""/>
+                        <label class="string-label">Second e String: </label>
+                        <input class="string input-block"/>    
                     </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-6no-break">
                     <div class="border-block">
-                        <label>Frist D String: </label>
-                        <input class="string input-box""/>
-                        <label>Second D String: </label>
-                        <input class="string input-box""/>
-                    </div>   
-                    <div class="border-block">
-                        <label> First A String: </label>
-                        <input class="string input-box""/>
-                        <label>Second A String: </label>
-                        <input class="string input-box""/>
+                        <label class="string-label">First B String: </label>
+                        <input class="string input-block"/>    
                     </div>
+                </div> 
+                <div class="col-6no-break">
                     <div class="border-block">
-                        <label>Frist E String: </label>
-                        <input class="string input-box""/>
-                        <label>Second E String: </label>
-                        <input class="string input-box""/>
+                        <label class="string-label">Second B String: </label>
+                        <input class="string input-block"/>    
                     </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">First G String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div> 
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">Second G String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">First D String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div> 
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">Second D String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">First A String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div> 
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">Second A String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div>     
+            </div>
+            <div class="row">
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">First E String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div> 
+                <div class="col-6no-break">
+                    <div class="border-block">
+                        <label class="string-label">Second E String: </label>
+                        <input class="string input-block"/>    
+                    </div>
+                </div>     
+            </div>
+            <div class="row">
+            	<h2 class="title">Spacing</h2>
+            	<hr>
+                <div class="col-6no-break">
+                    <p>Center To Center: </p>
+                    <input id="centerToCenter" class="string input-block"/>   
+                </div>
+                <div class="col-6no-break">
+                    <p>Spacing between octave strings: </p>
+                    <input id="octaveSpacing" class="string input-block"/>   
                 </div>
             </div>
             <div class="row">
-            	<div class="col-6">
-            		<h2 class="title">Enter Total Width</h2>
-            		<p>Center To Center: </p>
-            		<input id="centerToCenter"/>   
+            	<div class="col-12">    
+                	<button class="center" onclick="main()">Calculate Spacing</button>
             	</div>
-            	<div class="col-6">
-            		<h2 class="title">Enter Spacing</h2>
-            		<p>Spacing between octave strings: </p>
-            		<input id="octaveSpacing"/>   
-            	</div>
-            	<button type="Button" onclick="main()">Calculate Spacing</button>
+            </div>	
+        </div>    
+        <div class="col-8">
+            <h2 class="title">Your Spacing</h2>
+            <hr>
+            <div id="resultTable">
+                <table style="width: 100%;">
+                    <thead>
+                        <th>String</th>
+                        <th>Treble Side</th>
+                        <th>Bass Side</th>
+                        <th>Treble Side</th>
+                        <th>Bass Side</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="string-col">e</td>
+                            <td id ="trebleSide1"></td>
+                            <td id ="bassSide1"></td>
+                            <td id ="trebleSide2"></td>
+                            <td id ="bassSide2"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">B</td>
+                            <td id ="trebleSide3"></td>
+                            <td id ="bassSide3"></td>
+                            <td id ="trebleSide4"></td>
+                            <td id ="bassSide4"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">G</td>
+                            <td id ="trebleSide5"></td>
+                            <td id ="bassSide5"></td>
+                            <td id ="trebleSide6"></td>
+                            <td id ="bassSide6"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">D</td>
+                            <td id ="trebleSide7"></td>
+                            <td id ="bassSide7"></td>
+                            <td id ="trebleSide8"></td>
+                            <td id ="bassSide8"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">A</td>
+                            <td id ="trebleSide9"></td>
+                            <td id ="bassSide9"></td>
+                            <td id ="trebleSide10"></td>
+                            <td id ="bassSide10"></td>
+                        </tr>
+                        <tr>
+                            <td class="string-col">E</td>
+                            <td id ="trebleSide11"></td>
+                            <td id ="bassSide11"></td>
+                            <td id ="trebleSide12"></td>
+                            <td id ="bassSide12"></td>
+                        </tr>
+                    </tbody>     
+                </table>
             </div>
-            </div>    
-            <div class="col-6" id="table-box">
-                <h2 class="title">
-                    Your Spacing
-                </h2>
-                <div id="resultTable">
-                    <table class="center">
-                        <thead>
-                            <th class="string-col">String</th>
-                            <th>Treble Side</th>
-                            <th>Bass Side</th>
-                            <th>Treble Side</th>
-                            <th>Bass Side</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="string-col">e</td>
-                                <td id ="trebleSide1"></td>
-                                <td id ="bassSide1"></td>
-                                <td id ="trebleSide2"></td>
-                                <td id ="bassSide2"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">B</td>
-                                <td id ="trebleSide3"></td>
-                                <td id ="bassSide3"></td>
-                                <td id ="trebleSide4"></td>
-                                <td id ="bassSide4"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">G</td>
-                                <td id ="trebleSide5"></td>
-                                <td id ="bassSide5"></td>
-                                <td id ="trebleSide6"></td>
-                                <td id ="bassSide6"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">D</td>
-                                <td id ="trebleSide7"></td>
-                                <td id ="bassSide7"></td>
-                                <td id ="trebleSide8"></td>
-                                <td id ="bassSide8"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">A</td>
-                                <td id ="trebleSide9"></td>
-                                <td id ="bassSide9"></td>
-                                <td id ="trebleSide10"></td>
-                                <td id ="bassSide10"></td>
-                            </tr>
-                            <tr>
-                                <td class="string-col">E</td>
-                                <td id ="trebleSide11"></td>
-                                <td id ="bassSide11"></td>
-                                <td id ="trebleSide12"></td>
-                                <td id ="bassSide12"></td>
-                            </tr>
-                        </tbody>     
-                    </table>
-                </div>
-                <p>
-                    <a href="javascript: popuponclick()">Printer Friendly</a>
-                </p>
-            </div>
+            <p>
+                <a href="javascript: popuponclick()">Printer Friendly</a>
+            </p>
         </div>
     </div>
-    <div class="hidden-checkbox">
+</div>
+<div class="hidden-checkbox">
     <input id="octaveOrNot" type="checkbox" checked/>
 </div>
 </body>

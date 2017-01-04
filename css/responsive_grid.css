@@ -1,19 +1,14 @@
-/*
-This is a responsive, mobile first grid, with a few extras for basic page styling. 
-*/
 
 * {
    -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
-	box-sizing: border-box;
+   box-sizing: border-box;
 }
 
-
-/* For mobile phones: */
 [class*="col-"] {
     width: 100%;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 900px) {
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
@@ -33,11 +28,6 @@ This is a responsive, mobile first grid, with a few extras for basic page stylin
     padding: 15px;
 }
 
-/*
-	The columns inside a row are all floating to the left, and are therefore taken out of the flow of the page,
-	and other elements will be placed as if the columns do not exist. To prevent this,
-	we will add a style that clears the flow:
-*/
 
 .row::after {
     content: "";
@@ -47,7 +37,16 @@ This is a responsive, mobile first grid, with a few extras for basic page stylin
 
 
 
-@media only screen and (min-width: 1200px) {
+.main-block {
+    background: rgba(255,255,255,0.9);
+    width: 100%;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media only screen and (min-width: 900px) {
     .main-block {
         background: rgba(255,255,255,0.9);
         width: 80%;
@@ -56,17 +55,4 @@ This is a responsive, mobile first grid, with a few extras for basic page stylin
         margin-right: auto;
         margin-left: auto;
     }
-    
 }
-
-@media only screen and (min-width: 100px) {
-    .main-block {
-        background: rgba(255,255,255,0.9);
-        width: 100%;
-        padding-left: 2px;
-        padding-right: 2px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-}
-
