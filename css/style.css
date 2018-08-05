@@ -1,165 +1,31 @@
-html {
-    font-family: "Lucida Sans", sans-serif;
+.container
+{
+	padding: 1rem;
+	border: 1px solid black;
+	width: 50%;
+ 	margin: 0 auto;
 }
 
-*{
-
-}
-
-body {
-background-color: black;
-}
-
-.title {
+.text-center
+{
 	text-align: center;
 }
 
-.nav li {
-    display: inline-block;
-
+input {
+	width: 3em;
 }
 
-.nav a {
-	text-decoration: none;
-	hieght: 32px;
-}
 
-.nav {
-    background: #fff;
-    background: rgba(255,255,255,0.9);
-    
-}
-
-.center {
-  display: block;
-  margin:0 auto;
-}
-
-.input-container {
-	padding: 3px 3px 3px 1px;
-	display: inline;
-	width: 16.5%;
-	/*border: 1px solid red;*/
-}
-
-.label {
-	display: inline-block;
-	width: 16.5px;
-}
-.button {
-   	background-color: rgb(200,255,255);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 32px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-.active {
-	font-weight: bold;
-	font-size: 19px;
-}
-
-.button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-a.button {
-	background: none;/*linear-gradient(45deg, rgba(255,184,115,0.65) 0%,rgba(255,124,189,0.65) 50%,rgba(108,0,153,0.65) 100%);*/
-	border-radius: 2px;
-	box-shadow: 0px 2px 4px rgba(34,62,66,.25);
-  color: black;
-  font-size: 18px;
-  letter-spacing: 1px;
-  padding: 16px 32px;
-  text-decoration: none;
-  text-transform: uppercase;
-  -webkit-transition: box-shadow 1s ease;
-	transition: box-shadow 1s ease;
-}
-
-a.button:hover {
-	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
-	-webkit-transition: box-shadow 1s ease;
-	transition: box-shadow 1s ease;
-}
-
-#banner-header {
-	color: rgb(0, 0, 0, .9);
-	padding-right: 6em;
-}
-
-.error {
+.error{
 	background-color: red;
 }
 
-
-.output-minibox {
-	border: 1px solid;
-	border-radius: 1px;
-	width: 50%;
+.focused
+{
+	background-color: green;
 }
 
-.hidden-checkbox{
-	display: none;
-}
-
-table {
-  width: 100%;
-} 
-thead th {
-  background: #88CCF1;
-  color: #FFF;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-tr {
-  background: #f4f7f8;
-  border-bottom: 1px solid #FFF;
-  margin-bottom: 5px;
-}
-
-th, td {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  padding: 12px;
-  text-align: left;
-  font-size: 2em;
-}
-
-
-.border-block {
-  padding: 2px 2px;
-  font-size: 1em;
-}
-
-#table-box {
-  min-width: 567px;
-}
-
-.input-block {
-  width: 3em;
-  display: inline-block;
-  line-height: 30px;
-  font-size: 30px;
-  
-}
-
-.string-label {
-  display: block;
-}
-
-.col-6no-break {
-  width: 50% !important;
-}
-
-.string-col {
-  background: #88CCF1;
-  color: #FFF;
-  font-size: 2em;
+.inline
+{
+	display: inline;
 }

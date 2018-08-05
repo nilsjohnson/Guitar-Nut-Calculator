@@ -2,139 +2,89 @@
 <html lang="en">
 
 <head>
-    <title>Guitar Nut Calculator</title>
+    <title>Guitar Nut Spacing Calculator</title>
     <meta charset="utf-8">
     <meta name="description" content="Guitar Nut Spacing Calculator">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive_grid.css" rel="stylesheet">
-    <script src="js/calculator.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link href="css/style.css" rel="stylesheet">
+    
+
+
+  
 </head>
+
 <body>
- <ul class="nav">
-    <li>
-        <h1 class="title" id="banner-header">Guitar Nut Calculator</h1>
-    </li>
-    <li>
-        <a href="index.html" class="button active">
-            6 String Guitar
-        </a>
-    </li>
-    <li>
-        <a href="mandolin.html" class="button">
-            Mandolin
-        </a>    
-    </li>
-    <li>
-        <a href="12string.html" class="button">
-            12 String Guitar
-        </a>    
-    </li>
-</ul>
-<div class="main-block" style="min-width: 375px !important">
-    <div class="row">
-        <div class="col-4">
-            <h2 class="title">
-                String Guages
-            </h2>
-            <hr>
-            <div class="row">
-                <div class="col-6no-break">
-                    <div class="border-block">
-                        <label class="string-label">E String: </label>
-                        <input class="string input-block"/>
-                    </div>
-                    <div class="border-block">
-                        <label class="string-label">B String: </label>
-                        <input class="string input-block"/>
-                    </div>
-                    <div class="border-block">
-                        <label class="string-label">G String: </label>
-                        <input class=" string input-block"/>
-                    </div>    
-                </div>
-                <div class="col-6no-break">   
-                    <div class="border-block">
-                        <label class="string-label">D String: </label>
-                        <input class="string input-block"/>
-                    </div>
-                    <div class="border-block">
-                        <label class="string-label">A String: </label>
-                        <input class="string input-block"/>
-                    </div>
-                    <div class="border-block">
-                        <label class="string-label">E String: </label>
-                        <input class="string input-block"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <h2 class="title">Spacing</h2>
-                <hr>
-                <div class="col-12">
-                    <p>Center To Center: </p>
-                    <input id="centerToCenter" class="input-block"/>   
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">    
-                    <button class="center" onclick="main()">Calculate Spacing</button>
-                </div>
-            </div>  
-        </div>    
-        <div class="col-8">
-            <h2 class="title">
-                Your Spacing
-            </h2>
-            <div id="resultTable">
-                <table style="width: 100%;">
-                    <thead>
-                        <th>String</th>
-                        <th>Treble Side</th>
-                        <th>Bass Side</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="string-col">e</td>
-                            <td id ="trebleSide1"></td>
-                            <td id ="bassSide1"></td>
-                        </tr>
-                        <tr>
-                            <td class="string-col">B</td>
-                            <td id ="trebleSide2"></td>
-                            <td id ="bassSide2"></td>
-                        </tr>
-                        <tr>
-                            <td class="string-col">G</td>
-                            <td id ="trebleSide3"></td>
-                            <td id ="bassSide3"></td>
-                        </tr>
-                        <tr>
-                            <td class="string-col">D</td>
-                            <td id ="trebleSide4"></td>
-                            <td id ="bassSide4"></td>
-                        </tr>
-                        <tr>
-                            <td class="string-col">A</td>
-                            <td id ="trebleSide5"></td>
-                            <td id ="bassSide5"></td>
-                        </tr>
-                        <tr>
-                            <td class="string-col">E</td>
-                            <td id ="trebleSide6"></td>
-                            <td id ="bassSide6"></td>
-                        </tr>
-                    </tbody>     
-                </table>
-            </div>
-            <p>
-                <a href="javascript: popuponclick()">Printer Friendly</a>
-            </p>
+    <div class="container">
+        <h1 class="text-center">Nut Spacing Calculator</h1>
+        <hr>
+
+        <label>Instrument</label>
+        <select class="" onchange="setInstrument(this.value);">
+            <option value="guitar">Guitar</option>
+            <option value="bass">Bass</option>
+            <option value="mandolin">Mandolin</option>
+            <option value="12-string">12 String Guitar</option>
+            <option value="custom">Custom</option>
+        </select>
+
+        <label>Strings</label>
+        <select id="guage-select" onchange="prefillGuages(this.value);">
+        </select>
+
+
+        <h3 class="">Options</h3>
+
+        
+        <div id="options">
+            <label>Number of Strings: </label>
+            <input id="num-strings"/>
+
+            <br>
+
+            <label for="width">Width: </label>
+            <input id="width" value="6" onchange="calc();"/>
+
+            <input type="radio" id="edge-to-edge-radio" name="aaa">
+            <label for="edge-to-edge-radio">Edge to Edge</label>
+
+            <input type="radio" id="center-to-center-radio" name="aaa">
+            <label for="center-to-center-radio">Center To Center</label>
+
+            <br>
+
+            <label>Octave Instrument: </label>
+            <input type="checkbox" name="octave" id="octave";>
         </div>
+   
+        
+        
+
+      
+        <h3>String Guages</h3>
+        <div id="guage-input">
+            
+        </div>
+
+        <h2>Your Spacing</h2>
+        <table>
+            <thead id="output-table-head">
+              
+            </thead>
+            <tbody id="output-table-body">
+
+            </tbody>     
+        </table>
+
+
     </div>
-</div>
-<div class="hidden-checkbox">
-    <input id="octaveOrNot" type="checkbox"/>
-</div>
+
 </body>
+
+<script src="js/sets.js"></script> 
+<script src="js/script.js"></script>
+<script>
+    setInstrument("guitar");
+</script>
+
 </html>
