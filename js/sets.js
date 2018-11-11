@@ -12,6 +12,16 @@ class InstrumentStringSet {
 		this.strings = strings;
 		this.setName = setName;
 	}
+
+	addString()
+	{
+
+	}
+
+	removeString()
+	{
+		
+	}
 }
 
 //----String guages----
@@ -145,7 +155,9 @@ var mandoLight = new InstrumentStringSet(mandoLightStrings, "Light");
 var mandoMedLight = new InstrumentStringSet(mandoMedLightStrings, "Medium-Light");
 var mandoMed = new InstrumentStringSet(mandoMedStrings, "Medium");
 var mandoHeavyMed = new InstrumentStringSet(mandoHeavyMedStrings, "Heavy-Medium");
-var mandoEZSet = new InstrumentStringSet(mandoEZStrings, "EZ");
+
+// -- dummy custom set
+var customSet = new InstrumentStringSet([], "")
 
 //---Arrays of sets----
 var guitarSets = [
@@ -160,7 +172,6 @@ var bassSets = [
 		bassMed];
 
 var mandoSets = [
-		mandoEZSet,
 		mandoLight,
 		mandoMedLight,
 		mandoMed,
@@ -168,7 +179,9 @@ var mandoSets = [
 		]
 
 
-
+var custSets = [
+	customSet
+]
 
 
 

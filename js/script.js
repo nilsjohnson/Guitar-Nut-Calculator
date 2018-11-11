@@ -40,11 +40,11 @@ var setInstrument = function(value)
 	switch(value)
 	{
 		case "guitar":
-			setStringOptions(guitarSets);
+			fillStringSetList(guitarSets);
 			break;
 
 		case "bass":
-			setStringOptions(bassSets);
+			fillStringSetList(bassSets);
 			break;
 
 		case "custom":
@@ -52,14 +52,16 @@ var setInstrument = function(value)
 			document.getElementById("num-strings").readOnly = false;
 			document.getElementById("num-strings").classList.add("focused");
 			document.getElementById("num-strings").addEventListener("change", makeCustomSet);
+
+			fillStringSetList(custSets);
+
 			break;
 	
 
 		case "mandolin":
 			showOctaveSpacingInput();
-			setStringOptions(mandoSets);
+			fillStringSetList(mandoSets);
 			document.getElementById("octave").checked = true;
-			document.getElementById("octave").disabled = true; 
 	
 			break;	
 
@@ -67,11 +69,11 @@ var setInstrument = function(value)
 			console.log("option not found? : (");
 			break;
 	}
-	prefillGuages(0);
+	prefillGuageInputs(0);
 }
 
 // fills the dropdown menu with possible sets
-var setStringOptions = function(stringSets)
+var fillStringSetList = function(stringSets)
 {
 	// set the current sets to be fore the selected instrument
 	currentSets = stringSets;
@@ -93,16 +95,16 @@ var setStringOptions = function(stringSets)
 }
 
 // puts the string guages from the chosen set on page
-var prefillGuages = function(setIndex)
+var prefillGuageInputs = function(setIndex)
 {
 	chosenSet = currentSets[setIndex]	
-	var numStrings = chosenSet.strings.length
+	var numStrings = chosenSet.strings.length;
 
 	// clear the inputs
-	document.getElementById("guage-input").innerHTML = "";
+	clearChildren("guage-input");
 
 	// set the number of strings field
-	document.getElementById("num-strings").value = (chosenSet.strings.length);
+	document.getElementById("num-strings").value = numStrings;
 
 	// fill the guage input section
 	if(!isOctave())
@@ -118,9 +120,7 @@ var prefillGuages = function(setIndex)
 			var input = document.createElement("input");
 			input.classList.add("string-input");
 			input.value = chosenSet.strings[i].guage;
-			input.addEventListener("change", calc);
-
-
+			input.addEventListener("change", calculate);
 
 			div.appendChild(label);
 			div.appendChild(input);
@@ -129,14 +129,7 @@ var prefillGuages = function(setIndex)
 	}
 	else
 	{
-		if(numStrings % 2 != 0)
-		{
-			//TODO throw exception or sumthin'
-			console.log("Cant do an octave instrument with odd # of strings");
-		}
-
 		var i = 0;
-
 		while(i < numStrings)
 		{
 			var div = document.createElement("div");
@@ -147,7 +140,7 @@ var prefillGuages = function(setIndex)
 			var input = document.createElement("input");
 			input.classList.add("string-input");
 			input.value = chosenSet.strings[i].guage;
-			input.addEventListener("change", calc);
+			input.addEventListener("change", calculate);
 			input.classList.add("inline");
 
 			i++;
@@ -158,9 +151,8 @@ var prefillGuages = function(setIndex)
 			var input2 = document.createElement("input");
 			input2.classList.add("string-input");
 			input2.value = chosenSet.strings[i].guage;
-			input2.addEventListener("change", calc);
+			input2.addEventListener("change", calculate);
 			input2.classList.add("inline");
-
 
 			i++;
 
@@ -172,15 +164,15 @@ var prefillGuages = function(setIndex)
 		}
 	}
 
-	calc();
+	calculate();
 }
 
 
 // gets input and calculates spacing
-var calc = function()
+var calculate = function()
 {
 	var stringGuageElements = document.getElementsByClassName("string-input");
-	var guages = [];
+	var stringGuages = [];
 	var centerToCenterElement = document.getElementById("width");
 	var totalStringWidth = 0;
 	var spacing = null;
@@ -201,7 +193,7 @@ var calc = function()
 			if(!isNaN(temp) && temp > 0)
 			{
 				totalStringWidth += temp;
-				guages[i] = temp;
+				stringGuages[i] = temp;
 			}
 			else if(isNaN(temp))
 			{
@@ -232,7 +224,7 @@ var calc = function()
 	}
 
 	// since we measure illegalCenterToCenter to center, ignore space beyond in total
-	totalStringWidth -= guages[0]/2 + guages[numStrings-1]/2;
+	totalStringWidth -= stringGuages[0]/2 + stringGuages[numStrings-1]/2;
 
 	try
 	{
@@ -262,15 +254,11 @@ var calc = function()
 		else
 		{
 			spacing = (centerToCenter-totalStringWidth)/((numStrings/2)-1);
-			console.log("THE SPACING between sets: " + spacing);
-			console.log("centerToCenter:" + centerToCenter);
-			console.log("totalStringWidth " + totalStringWidth);
 		}
 	
 
-		// TOD0 if center to center
-		var trebleSide = -(guages[0]/2);
-		var bassSide = guages[0]/2;
+		var trebleSide = -(stringGuages[0]/2);
+		var bassSide = stringGuages[0]/2;
 
 		// for the table Head
 		var trHead = document.createElement("tr");
@@ -306,8 +294,8 @@ var calc = function()
 
 				document.getElementById("output-table-body").appendChild(tr);
 
-				trebleSide += guages[i] + spacing;
-				bassSide += spacing + guages[i+1];
+				trebleSide += stringGuages[i] + spacing;
+				bassSide += spacing + stringGuages[i+1];
 			}
 		}
 		// if is an octave instrument
@@ -349,9 +337,9 @@ var calc = function()
 				tr.appendChild(bassTd);
 
 				// sets the location for next string
-				trebleSide += guages[i] + lastOctaveSpacing;
+				trebleSide += stringGuages[i] + lastOctaveSpacing;
 				i++;
-				bassSide += lastOctaveSpacing + guages[i];
+				bassSide += lastOctaveSpacing + stringGuages[i];
 				
 				// puts mext stromg in the table
 				name2Td.innerHTML = chosenSet.strings[i].stringName;
@@ -362,9 +350,9 @@ var calc = function()
 				tr.appendChild(bass2Td);
 
 				// sets location for next string
-				trebleSide += guages[i] + spacing;
+				trebleSide += stringGuages[i] + spacing;
 				i++;
-				bassSide += spacing + guages[i];
+				bassSide += spacing + stringGuages[i];
 
 				
 
@@ -395,8 +383,8 @@ var makeCustomSet = function()
 	}
 
 	var set = [new InstrumentStringSet(customStrings, "Custom Set")];
-	setStringOptions(set);
-	prefillGuages(0);
+	fillStringSetList(set);
+	prefillGuageInputs(0);
 }
 
 var showOctaveSpacingInput = function()
@@ -409,6 +397,7 @@ var showOctaveSpacingInput = function()
 		var input = document.createElement("input");
 		input.id = "octave-spacing";
 		input.value = lastOctaveSpacing;
+		input.addEventListener("change", calculate);
 
 		
 		var label = document.createElement("label");
@@ -419,6 +408,8 @@ var showOctaveSpacingInput = function()
 
 		document.getElementById("options").appendChild(div);
 		octaveInputShowing = true;
+
+		prefillGuageInputs(0);
 	}
 }
 
@@ -429,6 +420,8 @@ var removeOctaveSpacingInput = function()
 		var div = document.getElementById("octave-input");
 		div.parentNode.removeChild(div);
 		octaveInputShowing = false;
+
+		prefillGuageInputs(0);
 	}
 }
 

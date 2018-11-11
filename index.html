@@ -29,7 +29,7 @@
         </select>
 
         <label>Strings</label>
-        <select id="guage-select" onchange="prefillGuages(this.value);">
+        <select id="guage-select" onchange="prefillGuageInputs(this.value);">
         </select>
 
 
@@ -38,12 +38,12 @@
         
         <div id="options">
             <label>Number of Strings: </label>
-            <input id="num-strings"/>
+            <input id="num-strings" onchange="calculate();"/>
 
             <br>
 
             <label for="width">Width: </label>
-            <input id="width" value="6" onchange="calc();"/>
+            <input id="width" value="6" onchange="calculate();"/>
 
             <input type="radio" id="edge-to-edge-radio" name="aaa">
             <label for="edge-to-edge-radio">Edge to Edge</label>
@@ -54,7 +54,7 @@
             <br>
 
             <label>Octave Instrument: </label>
-            <input type="checkbox" name="octave" id="octave";>
+            <input type="checkbox" name="octave" id="octave" onchange="calculate();">
         </div>
    
         
