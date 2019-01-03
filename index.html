@@ -8,14 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link href="css/style.css" rel="stylesheet">
-    
-
-
-  
 </head>
 
 <body>
     <div class="container">
+        
         <h1 class="text-center">Nut Spacing Calculator</h1>
         <hr>
 
@@ -25,51 +22,47 @@
             <option value="bass">Bass</option>
             <option value="mandolin">Mandolin</option>
             <option value="12-string">12 String Guitar</option>
-            <option value="custom">Custom</option>
         </select>
 
         <label>Strings</label>
-        <select id="guage-select" onchange="prefillGuageInputs(this.value);">
-        </select>
+        <select id="guage-select" onchange="prefillGuageInputs(this.value);"></select>
 
-
-        <h3 class="">Options</h3>
-
+        <div>
+            <h3>Options</h3>
         
-        <div id="options">
-            <label>Number of Strings: </label>
-            <input id="num-strings" onchange="calculate();"/>
+            <div>
+                <label for="width">Overall String Width: </label>
+                <input type="text" id="width" onkeyup="calculate();"/>
+            </div>    
 
-            <br>
+            <div>
+                <input type="radio" id="edge-to-edge-radio" name="width" onclick="calculate();" checked>
+                <label for="edge-to-edge-radio">Edge to Edge</label>
+                
+            </div>
 
-            <label for="width">Width: </label>
-            <input id="width" value="6" onchange="calculate();"/>
+            <div>
+               <input type="radio" id="center-to-center-radio" name="width" onclick="calculate();">
+               <label for="center-to-center-radio">Center To Center</label>
+           </div> 
 
-            <input type="radio" id="edge-to-edge-radio" name="aaa">
-            <label for="edge-to-edge-radio">Edge to Edge</label>
+           <div id="union-space-wrapper">
+            <label for="union-space">Space Between Union Strings: </label>
+            <input type="text" value=".08" id="union-space" onkeyup="calculate();"/>
+        </div>     
 
-            <input type="radio" id="center-to-center-radio" name="aaa">
-            <label for="center-to-center-radio">Center To Center</label>
+        <br>
 
-            <br>
 
-            <label>Octave Instrument: </label>
-            <input type="checkbox" name="octave" id="octave" onchange="calculate();">
-        </div>
-   
-        
-        
-
-      
         <h3>String Guages</h3>
         <div id="guage-input">
-            
+
         </div>
 
         <h2>Your Spacing</h2>
         <table>
             <thead id="output-table-head">
-              
+
             </thead>
             <tbody id="output-table-body">
 
