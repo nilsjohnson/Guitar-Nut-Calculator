@@ -8,16 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link href="css/style.css" rel="stylesheet">
+    <link 
+    rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
-        
+
         <h1 class="text-center">Nut Spacing Calculator</h1>
         <hr>
 
         <label>Instrument</label>
-        <select class="" onchange="setInstrument(this.value);">
+        <select id="instrument-select" onchange="setInstrument(this.value);">
             <option value="guitar">Guitar</option>
             <option value="bass">Bass</option>
             <option value="mandolin">Mandolin</option>
@@ -27,57 +30,90 @@
         <label>Strings</label>
         <select id="guage-select" onchange="prefillGuageInputs(this.value);"></select>
 
-        <div>
-            <h3>Options</h3>
-        
-            <div>
-                <label for="width">Overall String Width: </label>
-                <input type="text" id="width" onkeyup="calculate();"/>
-            </div>    
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <label for="width">Overall String Width: </label>
+                    <input type="text" id="width" onkeyup="calculate();"/>
+                    <span>inches</span>
+                </div>    
 
-            <div>
-                <input type="radio" id="edge-to-edge-radio" name="width" onclick="calculate();" checked>
-                <label for="edge-to-edge-radio">Edge to Edge</label>
-                
+                <div>
+                    <input type="radio" id="edge-to-edge-radio" name="width" onclick="calculate();" checked>
+                    <label for="edge-to-edge-radio">Edge to Edge</label>
+                    
+                </div>
+
+                <div>
+                 <input type="radio" id="center-to-center-radio" name="width" onclick="calculate();">
+                 <label for="center-to-center-radio">Center To Center</label>
+             </div> 
+
+             <div id="union-space-wrapper">
+                <label for="union-space">Space Between Union Strings: </label>
+                <input type="text" value=".08" id="union-space" onkeyup="calculate();"/>
+                <span>inches</span>
+            </div> 
+
+            <h4>String Guages(Inches)</h4>
+            <div id="guage-input">
+                <!-- input table loads in here -->
             </div>
 
-            <div>
-               <input type="radio" id="center-to-center-radio" name="width" onclick="calculate();">
-               <label for="center-to-center-radio">Center To Center</label>
-           </div> 
 
-           <div id="union-space-wrapper">
-            <label for="union-space">Space Between Union Strings: </label>
-            <input type="text" value=".08" id="union-space" onkeyup="calculate();"/>
-        </div>     
+            <label>Output Units:</label>
+            <select id="unit-select" onchange="setUnits(this.value);">
+                <option value="inch">Inches(decimal)</option>
+                <option value="64th">Inches(fractional)</option>
+                <option value="cm">Centimeter</option>
+                <option value="mm">Milimeter</option>
+             
+            </select>
 
-        <br>
-
-
-        <h3>String Guages</h3>
-        <div id="guage-input">
 
         </div>
-
-        <h2>Your Spacing</h2>
-        <table>
-            <thead id="output-table-head">
-
-            </thead>
-            <tbody id="output-table-body">
-
-            </tbody>     
-        </table>
-
-
+        <div class="col-6"> 
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Please start by choosing the instrument and set of strings for the instrument you wish to cut a nut for. If the set you want isn't listed, select the closest match and change the guages as you need in the input boxes. Input is assumed to be inches.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p>
+                        Edge to edge means that the overall width is measured from the outside of the highest and lowest strings. Center to center means that the overall width is measured from the middle of the highest and lowest strings. Both settings yield equal spacing between the strings.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <img src="img/nut.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <h2 class="text-center">Your Spacing</h2>
+
+    <table class="table table-dark table-striped">
+        <thead id="output-table-head">
+
+        </thead>
+        <tbody id="output-table-body">
+
+        </tbody>     
+    </table>
+
+
+
+
+</div>
 
 </body>
 
 <script src="js/sets.js"></script> 
 <script src="js/script.js"></script>
-<script>
-    setInstrument("guitar");
-</script>
+<script src="js/conversion.js"></script>
 
 </html>

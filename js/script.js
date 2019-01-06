@@ -1,7 +1,8 @@
 var precision = 3;
-var currentSets = null;
-var chosenSet = null;
-var isOctave = null;
+var currentSets;
+var chosenSet;
+var isOctave ;
+var chosenOutputUnit;
 
 
 var setInstrument = function(value)
@@ -152,8 +153,8 @@ var calculate = function()
 			// if OK
 			if(!isNaN(temp) && temp > 0)
 			{
-				totalStringWidth += temp;
-				stringGuages[i] = temp;
+				totalStringWidth += convertUnits(temp);
+				stringGuages[i] = convertUnits(temp);
 			}
 			else
 			{
@@ -177,7 +178,7 @@ var calculate = function()
 			// if OK
 			if(!isNaN(temp) && temp > 0)
 			{
-				unionSpace = temp;
+				unionSpace = convertUnits(temp);
 				totalStringWidth += unionSpace*(numStrings/2);
 			}
 			else
@@ -199,9 +200,9 @@ var calculate = function()
 		var temp = parseFloat(widthElement.value);
 
 		// if OK
-		if(!isNaN(temp) && temp > totalStringWidth)
+		if(!isNaN(temp) && convertUnits(temp) > totalStringWidth)
 		{
-			width = temp;
+			width = convertUnits(temp);
 		}
 		else
 		{
@@ -214,7 +215,6 @@ var calculate = function()
 		widthElement.classList.add("error");
 		illegalWidth = true;
 	}
-
 
 	// clear old data
 	clearChildren("output-table-body");
@@ -263,11 +263,11 @@ var calculate = function()
 		{
 			var tr = document.createElement("tr");
 			var nameTd = document.createElement("td")
-			var trebleTd = document.createElement("td");
-			var bassTd = document.createElement("td");
+			var trebleTd = createOutputTd();
+			var bassTd = createOutputTd();
 			nameTd.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd.innerHTML = trebleSide.toFixed(precision);
-			bassTd.innerHTML = bassSide.toFixed(precision);
+			trebleTd.innerHTML = trebleSide.toFixed(precision) + "\"";
+			bassTd.innerHTML = bassSide.toFixed(precision) + "\"";
 
 			tr.appendChild(nameTd);
 			tr.appendChild(trebleTd);
@@ -301,12 +301,13 @@ var calculate = function()
 
 			// the first
 			var nameTd_1 = document.createElement("td")
-			var trebleTd_1 = document.createElement("td");
-			var bassTd_1 = document.createElement("td")
+			var trebleTd_1 = createOutputTd(); 
+			
+			var bassTd_1 = createOutputTd();
 
 			nameTd_1.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd_1.innerHTML = trebleSide.toFixed(precision);
-			bassTd_1.innerHTML = bassSide.toFixed(precision);
+			trebleTd_1.innerHTML = trebleSide.toFixed(precision) + "\"";
+			bassTd_1.innerHTML = bassSide.toFixed(precision) + "\"";
 
 			tr.appendChild(nameTd_1);
 			tr.appendChild(trebleTd_1);
@@ -327,12 +328,12 @@ var calculate = function()
 				
 			// the second string
 			var nameTd_2 = document.createElement("td")
-			var trebleTd_2 = document.createElement("td");
-			var bassTd_2 = document.createElement("td")
+			var trebleTd_2 = createOutputTd();
+			var bassTd_2 = createOutputTd();
 
 			nameTd_2.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd_2.innerHTML = trebleSide.toFixed(precision);
-			bassTd_2.innerHTML = bassSide.toFixed(precision);
+			trebleTd_2.innerHTML = trebleSide.toFixed(precision) + "\"";
+			bassTd_2.innerHTML = bassSide.toFixed(precision) + "\"";
 			tr.appendChild(nameTd_2);
 			tr.appendChild(trebleTd_2);
 			tr.appendChild(bassTd_2);
@@ -355,6 +356,18 @@ var calculate = function()
 	}
 
 	document.getElementById("output-table-head").appendChild(trHead);
+
+	if(chosenOutputUnit != "inch")
+	{
+		convertUnits(chosenOutputUnit);
+	}
+}
+
+var createOutputTd = function()
+{
+	var elem = document.createElement("td");
+	elem.setAttribute("class", "output-val");
+	return elem;
 }
 
 
@@ -389,3 +402,63 @@ var setForRegularInput = function()
 {
 	document.getElementById("union-space-wrapper").style.display = "none";
 }
+
+var setUnits = function(unit)
+{
+	console.log("you chose: " + unit);
+	if(unit != chosenOutputUnit)
+	{
+		chosenOutputUnit = unit;
+		calculate();
+	}
+}
+
+var convertUnits = function(val)
+{
+	console.log("converting to: " + chosenOutputUnit);
+	switch(chosenOutputUnit)
+	{
+		case "inch":
+		//inches are default
+		return val;
+
+		break;
+
+		case "64th":
+		return val*64;
+
+		break;
+
+		case "cm":
+		return val*2.54;
+
+		break;
+
+		case "mm":
+		return val*25.4;
+
+		default:
+		console.log("unit not found :(")
+		return val;
+	}
+}
+
+var to64th = function(val)
+{
+	var floor = Math.floor(val);
+	var dec = val - floor;
+	if(floor > 0)
+	{
+		return floor + " " + Math.round(dec * 64) + ("/64\"");
+	}
+	else
+	{
+		return Math.round(dec * 64) + ("/64\"");
+	}
+}
+
+
+setInstrument("guitar");
+document.getElementById("instrument-select").value = "guitar";
+document.getElementById("unit-select").value = "inch";
+

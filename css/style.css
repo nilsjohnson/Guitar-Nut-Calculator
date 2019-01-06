@@ -1,35 +1,23 @@
+body
+{
+	background-image: url("../img/bg.png");
+}
+
 .container
 {
-	padding: 1rem;
-	border: 1px solid black;
-	width: 50%;
- 	margin: 0 auto;
+	background: rgba(255,255,255,0.87);
+	padding-top: 1em;
 }
 
-h1, h2
+.error
 {
-	text-align: center;
-}
-
-input {
-	width: 3em;
-}
-
-
-.error{
 	background-color: red;
 }
 
-.focused
-{
-	background-color: green;
-}
 
-.inline
-{
-	display: inline;
-}
 
+
+/*
 table 
 {
   width:100%;
@@ -45,8 +33,4 @@ th, td
 	padding: 15px;
  	text-align: left;
 }
-
-.well
-{
-	border: 1px solid black;
-}
+*/
