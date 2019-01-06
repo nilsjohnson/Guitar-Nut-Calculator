@@ -1,8 +1,9 @@
 var precision = 3;
 var currentSets;
 var chosenSet;
-var isOctave ;
+var isOctave;
 var chosenOutputUnit;
+var unitSymbol;
 
 
 var setInstrument = function(value)
@@ -266,8 +267,8 @@ var calculate = function()
 			var trebleTd = createOutputTd();
 			var bassTd = createOutputTd();
 			nameTd.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd.innerHTML = trebleSide.toFixed(precision) + "\"";
-			bassTd.innerHTML = bassSide.toFixed(precision) + "\"";
+			trebleTd.innerHTML = trebleSide.toFixed(precision) + unitSymbol;
+			bassTd.innerHTML = bassSide.toFixed(precision) + unitSymbol;
 
 			tr.appendChild(nameTd);
 			tr.appendChild(trebleTd);
@@ -306,8 +307,8 @@ var calculate = function()
 			var bassTd_1 = createOutputTd();
 
 			nameTd_1.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd_1.innerHTML = trebleSide.toFixed(precision) + "\"";
-			bassTd_1.innerHTML = bassSide.toFixed(precision) + "\"";
+			trebleTd_1.innerHTML = trebleSide.toFixed(precision) + unitSymbol;
+			bassTd_1.innerHTML = bassSide.toFixed(precision) + unitSymbol;
 
 			tr.appendChild(nameTd_1);
 			tr.appendChild(trebleTd_1);
@@ -332,8 +333,8 @@ var calculate = function()
 			var bassTd_2 = createOutputTd();
 
 			nameTd_2.innerHTML = chosenSet.strings[i].stringName + " (" + (i+1) + ")";
-			trebleTd_2.innerHTML = trebleSide.toFixed(precision) + "\"";
-			bassTd_2.innerHTML = bassSide.toFixed(precision) + "\"";
+			trebleTd_2.innerHTML = trebleSide.toFixed(precision) + unitSymbol;
+			bassTd_2.innerHTML = bassSide.toFixed(precision) + unitSymbol;
 			tr.appendChild(nameTd_2);
 			tr.appendChild(trebleTd_2);
 			tr.appendChild(bassTd_2);
@@ -409,6 +410,7 @@ var setUnits = function(unit)
 	if(unit != chosenOutputUnit)
 	{
 		chosenOutputUnit = unit;
+		updateUnitSymbol();
 		calculate();
 	}
 }
@@ -443,6 +445,29 @@ var convertUnits = function(val)
 	}
 }
 
+var updateUnitSymbol = function()
+{
+	switch(chosenOutputUnit)
+	{
+		case "64th":
+			unitSymbol = "/64\"";
+			break;
+
+		case "cm":
+			unitSymbol = "cm";
+			break;
+
+		case "mm":
+			unitSymbol = "mm";
+			break;		
+
+		case "inch":
+		default:
+			unitSymbol = "\"";
+	}
+}
+
+
 var to64th = function(val)
 {
 	var floor = Math.floor(val);
@@ -458,7 +483,9 @@ var to64th = function(val)
 }
 
 
-setInstrument("guitar");
+
 document.getElementById("instrument-select").value = "guitar";
 document.getElementById("unit-select").value = "inch";
+updateUnitSymbol();
+setInstrument("guitar");
 
